@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>my first app</title>
+    </head>
+    <body>
+        <table>
+            <% for(let i = 0; i < rows; i++){ %>
+                <tr>
+                    <% for(let j = 0; j < cols; j++){ %>
+                        <% if(i == 0 && j == 0) {%>
+                            <th></th>
+                        <% } else {%>
+                            <% if(j == 0){ %>
+                                <th>
+                                    <%= i %>
+                                </th>
+                            <% } else if(i == 0){%>
+                                <th>
+                                    <span><%= String.fromCharCode('A'.charCodeAt(0) + j - 1) %></span>
+                                </th>
+                            <% } else {%>
+                                <td>
+                                    <input type = "text" value ="" >
+                                </td>
+                            <% } %> 
+                        <% } %> 
+                    <% } %>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
