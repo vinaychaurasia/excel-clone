@@ -2,32 +2,48 @@
 <html>
     <head>
         <title>my first app</title>
+        <link rel = "stylesheet" type = "text/css" href = "./index.css" />
     </head>
     <body>
-        <table>
-            <% for(let i = 0; i < rows; i++){ %>
-                <tr>
+        <div id="container">
+            <div id="menu-bar">
+                <div>File</div>
+                <div>Home</div>
+                <div>Data</div>
+                <div>View</div>
+                <div>Help</div>
+            </div>
+            <div id="formula-bar">
+                <input type = "text" id="cell" />
+                <div id="separator"> : </div>
+                <input type="text" id="formula"/>
+            </div>
+            <div id="content-container">
+                <div id="tl-cell"></div> 
+                <div id="first-row">
                     <% for(let j = 0; j < cols; j++){ %>
-                        <% if(i == 0 && j == 0) {%>
-                            <th></th>
-                        <% } else {%>
-                            <% if(j == 0){ %>
-                                <th>
-                                    <%= i %>
-                                </th>
-                            <% } else if(i == 0){%>
-                                <th>
-                                    <span><%= String.fromCharCode('A'.charCodeAt(0) + j - 1) %></span>
-                                </th>
-                            <% } else {%>
-                                <td>
-                                    <input type = "text" value ="" >
-                                </td>
-                            <% } %> 
-                        <% } %> 
+                        <div class="cell"><%= String.fromCharCode('A'.charCodeAt(0) + j) %></div>
                     <% } %>
-                </tr>
-            <% } %>
-        </table>
+                </div>
+                <div id="first-col">
+                    <% for(let i = 0; i < rows; i++){ %>
+                        <div class="cell"><%= i+1%></div>
+                    <% } %>
+                </div>
+                <div id="grid">
+                    <% for(let i = 0; i < rows; i++){ %>
+                        <div class="row">
+                            <% for(let j = 0; j < cols; j++){ %>
+                                <div class="cell" contenteditable="true"></div>
+                            <% } %> 
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div id="sheets-bar">
+                <div id="sheets">sheets 1</div>
+                <div id="add">+</div>
+            </div>
+        </div>
     </body>
 </html>
