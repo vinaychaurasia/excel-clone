@@ -1,6 +1,12 @@
 html, body{
     padding : 0px;
     margin : 0px;
+    background-color: #FAFAFA;
+}
+
+*{
+    box-sizing: border-box;
+    outline: none;
 }
 
 #container{
@@ -11,19 +17,75 @@ html, body{
 #menu-bar{
     display : flex;
     flex-direction : row;
-    height : 20px;
+    height : 16px;
 }
 
 #menu-bar > div{
     padding : 0px 4px 5px 4px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     padding-bottom: 0px;
 }
 
-#menu-bar > div:hover{
-    border-bottom: 2px solid rgb(81, 39, 100);
-    font-size: 16px;
+#menu-bar > div:hover, #menu-bar > div.selected{
+    border-bottom: 1px solid rgb(81, 39, 100);
+     transform: scale(1.1);
+}
+
+#menu-content-container {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+
+.menu-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-group{
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px solid lightgray;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.menu-row{
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+}
+
+.menu-row > * {
+    margin: 0px 5px;
+    cursor: pointer;
+    border: 0.5px solid lightgray;
+    border-radius: 2px;
+    height: 21px;
+}
+
+.menu-row > input {
+    width: 25px;
+}
+
+.menu-row > input:hover {
+    transform: scale(1.2);
+}
+
+#font-family {
+    width: 95px;
+    font-size: 15px;
+}
+
+#font-size {
+    width: 60px;
+    font-size: 15px;
+}
+
+#bold.selected, #italic.selected, #underline.selected, #alignment-menu-container input.selected {
+    background-color: teal;
+    color: white;
 }
 
 #formula-bar {
@@ -40,6 +102,7 @@ html, body{
 #formula-bar > #separator{
     flex : 1%;
     text-align: center;
+    margin: 0px 5px 0px 5px;
 }
 
 #formula-bar > #formula{
@@ -48,8 +111,8 @@ html, body{
 
 #content-container{
     position: relative;
-    height : 630px;
     overflow : auto;
+    height: calc(100vh - 120px);
 }
 
 #tl-cell{
@@ -59,6 +122,7 @@ html, body{
     height: 25px;
     width: 25px;
     background-color: lightgray;
+    z-index: 3;
 }
 
 #first-row{
@@ -66,9 +130,10 @@ html, body{
     top: 0px;
     left: 25px;
     height: 25px;
-    background-color: lightgray;
+    background-color: darkgray;
     display: flex;
     flex-direction: row;
+    z-index: 2;
 }
 
 #first-col{
@@ -76,16 +141,16 @@ html, body{
     top: 25px;
     left: 0px;
     width: 25px;
-    background-color: lightgray;
+    background-color: darkgray;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 #grid{
     position: absolute;
     top: 25px;
     left: 25px;
-    background-color: lightgray;
 
     display: flex;
     flex-direction: column;
@@ -97,14 +162,35 @@ html, body{
 }
 
 .cell{
-    width: 50px;
-    border: 1px solid black;
-    text-align: center;
+    width: 70px;
+    border: 0.5px solid lightgray;
     box-sizing: border-box;
+    line-height: 25px;
+    font-size: 12px;
+    text-align: left;
+    padding: 2px;
+    cursor: cell;
+    border-radius: 2px;
+}
+
+.cell.selected {
+    border: 1px solid teal;
 }
 
 #first-col .cell{
     width: 25px;
+    /* border-color: white; */
+    font-size: 16px;
+    text-align: center;
+    padding: 0px;
+    line-height: 29px;
+}
+
+#first-row .cell{
+    /* border-color: white; */
+    font-size: 16px;
+    text-align: center;
+    padding: 0px;
 }
 
 #sheets-bar{
