@@ -3,7 +3,7 @@ const ejse = require('ejs-electron');
 
 ejse.data({
     rows : 1000,
-    cols : 27
+    cols : 26
 });
 
 app.whenReady().then(function(){
@@ -13,8 +13,10 @@ app.whenReady().then(function(){
         show : false
     });
     win.loadFile('index.ejs').then(function(){
+        win.removeMenu();
         win.maximize();
         win.show();
+        win.webContents.openDevTools();
     });
 });
 
